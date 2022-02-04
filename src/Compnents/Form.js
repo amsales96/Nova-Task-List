@@ -1,14 +1,14 @@
 import react from "react";
 
-const Form= ({ setInputText,todos,setTodos,inputText,setStatus }) => {
+const Form= ({ setInputText,listItem,setListItem,inputText,setStatus }) => {
     const inputTextHandler = (e) =>{
         console.log(e.target.value);
         setInputText(e.target.value);
     }; 
-    const submitTodoHandler = (e) =>{
+    const submitTaskHandler = (e) =>{
       e.preventDefault();
-      setTodos([
-        ...todos, {text: inputText, completed: false, id: Math.random() * 1000}
+      setListItem([
+        ...listItem, {text: inputText, completed: false, id: Math.random() * 1000}
       ]);
       setInputText("");
     };
@@ -18,12 +18,12 @@ const Form= ({ setInputText,todos,setTodos,inputText,setStatus }) => {
     }
     return(
         <form>
-        <input value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
-        <button onClick={submitTodoHandler} className="todo-button" type="submit">
+        <input value={inputText} onChange={inputTextHandler} type="text" className="task-input" />
+        <button onClick={submitTaskHandler} className="task-button" type="submit">
           <i className="fas fa-plus-square"></i>
         </button>
         <div className="select">
-          <select onChange={statusHandler} name="todos" className="filter-todo">
+          <select onChange={statusHandler} name="listItem" className="filter-task">
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>

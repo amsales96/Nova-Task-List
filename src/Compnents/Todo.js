@@ -1,13 +1,13 @@
 import react from "react";
 
-const Todo = ({text, todos, setTodos, todo}) => {
+const Todo = ({text, listItem, setListItem, task}) => {
 
     const deleteHandler = () =>{
-        setTodos(todos.filter((el) => el.id !== todo.id));  
+        setListItem(listItem.filter((el) => el.id !== task.id));  
     };
     const completeHandler = () =>{
-        setTodos(todos.map(item => {
-            if(item.id === todo.id)
+        setListItem(listItem.map(item => {
+            if(item.id === task.id)
                 return{
                     ...item, completed: !item.completed
                 };
@@ -16,8 +16,8 @@ const Todo = ({text, todos, setTodos, todo}) => {
               
     };
     return(
-        <div className="todo">
-            <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li>
+        <div className="task">
+            <li className={`task-item ${task.completed ? "completed" : ""}`}>{text}</li>
             <button onClick={completeHandler} className="complete-btn">
                 <i className="fas fa-check"></i>
             </button>
